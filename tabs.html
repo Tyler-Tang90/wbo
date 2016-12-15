@@ -48,7 +48,7 @@
             edit.onclick = function(){
                 var firstLi = li.querySelectorAll('font')[0];
                 if( this.innerHTML == "保存"){
-//                    txt = document.getElementsByTagName('input')[0];
+                   txt = document.getElementsByTagName('input')[0];
                     var x = txt.value; // 先获取文本框用户输入的值
                     firstLi.innerHTML = x; // 把li里的第一个input的内容改为x
                     this.innerHTML = '编辑';
