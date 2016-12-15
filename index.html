@@ -24,7 +24,7 @@
 <div class="content">
     <div id="box">
         标题: <input type="text" name="txt" id="tit" value="">
-        内容: <textarea name="message" id="comment"></textarea>
+        内容: <textarea name="message" id="content"></textarea>
         <input type="button" id="btn" value="提交">
     </div>
    <ul id="message"></ul>
@@ -32,7 +32,7 @@
 <script>
     window.onload = function () {
         var title = document.getElementById('tit');  //获取 input
-        var oArea = document.getElementById('comment'); //获取  textarea
+        var oArea = document.getElementById('content'); //获取  textarea
         var btn = document.getElementById('btn');   //获取按钮
         var message=document.getElementById("message");   //获取 ul
 
@@ -63,6 +63,12 @@
             del.onclick = function() {
                 message.removeChild( li );  //寻找到父级删除
             };
+        };
+        oArea.onkeyup = function(){
+            var len = oArea.value.length;
+            var n = 140 - len;
+            num.innerHTML = n;
+
         };
     };
 </script>
