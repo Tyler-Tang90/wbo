@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>防微博</title>
+    <title>仿微博评论</title>
 </head>
 <style>
     body { background: #f9f9f9;}
@@ -10,7 +10,7 @@
     .content { margin: 20px auto 0 auto; width: 500px; border: 1px solid #CCCCCC; padding: 30px;}
     #box { width: 100%; margin-bottom: 30px;}
     input { width: 430px; padding: 0 10px; height: 30px; border: 1px solid #ececec; font-size: 16px; color: #9b9b9b; line-height: 30px;}
-   textarea { border: 1px solid #ececec;width: 430px; height: 100px; padding: 0 10px; margin-top: 10px; font-size: 16px; color: #9b9b9b; line-height: 46px; vertical-align: middle;}
+   textarea { border: 1px solid #ececec;width: 430px; height: 100px; padding: 10px; margin-top: 10px; font-size: 16px; color: #9b9b9b; vertical-align: middle;}
      #btn { font-size: 16px; color: #fff;  margin: 10px 0 0 40px; border: none; background: #ff5842; cursor : pointer; width: 100px;}
     #message { margin: 0; list-style-type: none; width: 100%; background: #fff; padding: 10px;}
     #message li { position: relative;}
@@ -24,8 +24,8 @@
 <div class="content">
     <div id="box">
         标题: <input type="text" name="txt" id="tit" value="">
-        内容: <textarea name="message" id="content"></textarea>
-        <input type="button" id="btn" value="提交">
+        内容: <textarea name="message" id="content" maxlength="140"></textarea>
+        <input type="button" id="btn" value="提交"> &nbsp;<span>可以输入<span id="num">140</span>个字</span>
     </div>
    <ul id="message"></ul>
 </div>
@@ -34,7 +34,8 @@
         var title = document.getElementById('tit');  //获取 input
         var oArea = document.getElementById('content'); //获取  textarea
         var btn = document.getElementById('btn');   //获取按钮
-        var message=document.getElementById("message");   //获取 ul
+        var message = document.getElementById("message");   //获取 ul
+        var num = document.getElementById("num");   // 获取数字字数 ID
 
         btn.onclick = function () {
             var txtTitle=title.value;    //定义获取文本框里的值
@@ -54,10 +55,10 @@
             message.insertBefore(li,message.firstChild);  // 创建节点
             // insertBefore 在已有的节点前插入一个新的节点
             // appendChild  在已有的几点后插入一个新的节点
-
             title.value="";  //提交完后文本框消除数据
             title.focus();   //提交完后光标显示在文本框
             oArea.value="";  //提交完后文本域消除数据
+            num.innerHTML="140";
             // 删除功能
             var del = li.getElementsByTagName("a")[0];  //获取删除的超链接
             del.onclick = function() {
