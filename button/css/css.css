@@ -1,0 +1,22 @@
+html {overflow-x: hidden; overflow-y: auto;}
+body{ font-family:"Microsoft Yahei"; font-size: 12px; margin: 0; padding:0; background-color: #fff; color:#333;}
+ul,li{padding:0;margin:0;list-style:none;}
+div,form,img,ul,ol,li,dl,dt,dd,p,span{margin:0;padding:0;border:0;}
+form,input{margin:0;padding:0;}
+li{list-style-type:none;}
+h1,h2,h3,h4,h5,h6{margin:0;padding:0;font-size:12px;font-weight:normal;}
+a{text-decoration:none; color:#333;}
+a:hover{color:#ff6600;}
+a img{border:none;}
+.fl { float: left;}
+.fr { float: right;}
+.clearfix {*zoom:1;}
+.clearfix::after {content: ""; display:table; clear: both;}
+
+.content { margin:100px auto; width:500px;}
+.content .checkall { background:#44cd04; padding:10px; color:#fff; border-radius:5px 5px 0 0;}
+.content input { width: 17px; height:17px; vertical-align:middle;}
+.content .checklist { margin:0 auto; width:100%;}
+.content .checklist ul { margin:0; padding:0; list-style-type:none;}
+.content .checklist ul li { padding-left:25px; background:#ececec; line-height:30px; margin-top:1px;}
+.content .checklist ul li:hover { background:#80ec06; color:#fff;}
