@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>简单的添加/删除/修改</title>
+</head>
+<style>
+    body { background: #f9f9f9;}
+    input{ outline: none;}
+    .content { margin: 20px auto 0 auto; width: 500px; border: 1px solid #CCCCCC; padding: 0 30px;}
+    h1 { width: 100%; font-size: 30px; color: #ee2222; font-family: '华文行楷';}
+    input { width: 400px; padding: 0 10px; height: 30px; border: 1px solid #ececec; font-size: 16px; color: #9b9b9b; line-height: 30px;}
+    #box { margin: 0; padding: 0; list-style-type: none; width: 100%;}
+    #box li { position: relative; font-size: 16px; height: 30px; line-height: 30px; color: #ee2222; margin-bottom: 10px;}
+    #box li font { display: inline-block;}
+    #box li span { display: inline-block; position: absolute; right: 0; top: 6px;}
+    #box li span a { display: inline-block; color: #0b5ea5; text-decoration: none; cursor: pointer;}
+    h2 { width: 100%;}
+
+</style>
+<body>
+<div class="content">
+    <h1>每日一笑</h1>
+    <ul id="box">
+
+    </ul>
+    <h2><a href="javascript:;" id="add"><img src="n4.png" alt="" width="40"></a></h2>
+</div>
+<script>
+    window.onload = function() {
+        var add = document.getElementById('add'),box = document.getElementById('box');
+        // 添加点击事件
+        add.onclick = function(){
+            // 创建一个 li
+            var li = document.createElement('li');
+            li.innerHTML= "<font><input type='text' value=''></font> <span><a href='javascript:;'>保存</a> <a href='javascript:;'>删除</a></span>";
+            box.appendChild(li);  // 创建 li 到 ul 中
+            var txt = document.getElementsByTagName('input')[0];
+            txt.focus();  // 光标获取焦点在文本框内
+
+            // 删除的功能
+            var del = li.getElementsByTagName('a')[1];
+            del.onclick = function(){
+                box.removeChild(li);   //寻找到父级删除
+            };
+            //编辑/保存
+            var edit = li.getElementsByTagName('a')[0];
+            edit.onclick = function(){
+                var firstLi = li.querySelectorAll('font')[0];
+                if( this.innerHTML == "保存"){
+//                    txt = document.getElementsByTagName('input')[0];
+                    var x = txt.value; // 先获取文本框用户输入的值
+                    firstLi.innerHTML = x; // 把li里的第一个input的内容改为x
+                    this.innerHTML = '编辑';
+                }else{
+                    var oldLi= firstLi.innerHTML ;// 编辑 先拿到第一个单元格里的文本内容
+                    firstLi.innerHTML = '<input type="text" value="' + oldLi + '">';
+                    this.innerHTML = '保存';
+                    li.getElementsByTagName('input')[0].select();// 让文本框获取焦点(select 全选文字/focus 文字后面 )
+                }
+
+            };
+        };
+    };
+</script>
+</body>
+</html>
